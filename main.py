@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message": "This is second app"}
+    return {"message": "This is second  app"}
 @app.post("/items")
 async def create_item(request: Request):
     data = await request.json()
