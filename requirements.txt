@@ -1,7 +1,1 @@
-fastapi
-gunicorn
-pydantic
-pylint
-six
-starlette
-uvicorn
+Flask==3.0.0
