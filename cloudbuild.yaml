@@ -3,8 +3,6 @@ steps:
 #   args: ["app", "deploy","--verbosity","debug"]
 - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
   entrypoint: 'bash'
-  env-vars:
-   - MY_NAME: ${_MYNAME}
   args: 
    - '-c'
    - |
