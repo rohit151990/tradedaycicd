@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
-  args: ['-c', 'gcloud config set app/cloud_build_timeout 9600 && gcloud config set project tradeday && gcloud config set compute/zone us-central1 && gcloud app deploy --verbosity=debug']
+  args: ['-c', 'gcloud config set app/cloud_build_timeout 9600 && gcloud config set app/use_deprecated_preparation True && gcloud config set project tradeday && gcloud config set compute/zone us-central1 && gcloud app deploy --verbosity=debug']
 timeout: '9600s'
 options:
   logging: CLOUD_LOGGING_ONLY
