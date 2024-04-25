@@ -1,6 +1,8 @@
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy","--verbosity","debug"]
+  env:
+    - 'MY_NAME=$_MY_NAME'
 timeout: "4800s"
 options:
   logging: CLOUD_LOGGING_ONLY
