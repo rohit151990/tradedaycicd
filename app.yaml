@@ -1,3 +1,5 @@
 runtime: python39
 service: eventtest
 entrypoint: gunicorn -t 0 -w 4 -k uvicorn.workers.UvicornWorker app.main:app
+env_variables:
+  _MYNAME: ##_MYNAME##

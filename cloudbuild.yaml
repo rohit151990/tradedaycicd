@@ -3,9 +3,16 @@ steps:
 #   args: ["app", "deploy","--verbosity","debug"]
 - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
   entrypoint: 'bash'
-  args: ['-c', 'gcloud config set project neon-metric-318616 && gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy --verbosity debug']
-  env:
-    - 'MY_NAME=$_MYNAME'
+  env-vars:
+   - MY_NAME: ${_MYNAME}
+  args: 
+   - '-c'
+   - |
+      sed -i "s/##_MYNAME##/$${MY_NAME}/g" app.yaml
+      gcloud config set app/cloud_build_timeout 1600
+      gcloud app deploy
 timeout: "4800s"
 options:
   logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _MYNAME: ${_MYNAME}
