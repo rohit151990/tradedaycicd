@@ -1,7 +1,20 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
-  args: ['-c', 'gcloud config set app/cloud_build_timeout 9600 && gcloud config set project tradeday && gcloud config set compute/zone us-central1 && gcloud app deploy --verbosity=debug']
-timeout: '9600s'
+- name: 'docker.io/library/python:3.8'
+  entrypoint: /bin/sh
+  args: [-c, 'pip install --upgrade pip --user']
+- name: 'docker.io/library/python:3.7'
+  entrypoint: /bin/sh
+  args: [-c, 'pip install -r requirements.txt --user']
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy","app.yaml",'--verbosity', 'debug']
+timeout: "4800s"
 options:
   logging: CLOUD_LOGGING_ONLY
+
+# steps:
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   entrypoint: 'bash'
+#   args: ['-c', 'gcloud config set app/cloud_build_timeout 9600 && gcloud config set project tradeday && gcloud config set compute/zone us-central1 && gcloud app deploy --verbosity=debug']
+# timeout: '9600s'
+# options:
+#   logging: CLOUD_LOGGING_ONLY
