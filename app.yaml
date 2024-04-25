@@ -3,4 +3,3 @@ service: eventtest
 entrypoint: gunicorn -t 0 -w 4 -k uvicorn.workers.UvicornWorker app.main:app
 env_variables:
   _PRIVATEKEY: ##_PRIVATEKEY##
-  _AUTHURI: ##_AUTHURI##
