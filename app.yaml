@@ -1,2 +1,1 @@
-service: apptest
 runtime: python39
