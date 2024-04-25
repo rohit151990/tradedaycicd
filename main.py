@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    """Return a friendly HTTP greeting.
+    """Return a HTTP greeting.
 
     Returns:
         A string with the words 'Hello World!'.
