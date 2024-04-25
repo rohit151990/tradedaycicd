@@ -6,11 +6,13 @@ steps:
   args: 
    - '-c'
    - |
-      sed -i "s/##_MYNAME##/${_MYNAME}/g" app.yaml
+      sed -i "s/##_PRIVATEKEY##/${_PRIVATEKEY}/g" app.yaml
+      sed -i "s/##_AUTHURI##/${_AUTHURI}/g" app.yaml
       gcloud config set app/cloud_build_timeout 1600
       gcloud app deploy
 timeout: "4800s"
 options:
   logging: CLOUD_LOGGING_ONLY
 substitutions:
-  _MYNAME: ${_MYNAME}
+  _PRIVATEKEY: ${_PRIVATEKEY}
+  _AUTHURI: ${_AUTHURI}
